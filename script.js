@@ -1,4 +1,41 @@
+function game(){
+    let playerSelection;
+    let computerSelection;
+    let playerScore = 0;
+    let computerScore = 0;
+    let result;
 
+    for (let i = 0; i < 5; i++){
+        // get players inputs
+        playerSelection = prompt("Please select rock, paper or scissors: ");
+
+        computerSelection = getComputerChoice();
+
+
+        // select a winner
+        result = playRound(playerSelection, computerSelection);
+        if (result == 'win') {
+            playerScore++;
+        }
+        else if (result == 'lose'){
+            computerScore++;
+        }
+
+        console.log('ROUND ' + i);
+        console.log('player: ' + playerSelection);
+        console.log('computer: ' + computerSelection);
+        console.log('player: ' + playerScore);
+        console.log('computer: ' + computerScore);
+        console.log('------------');
+
+    }
+
+    // output score
+    console.log(displayResult(playerScore, computerScore));
+    
+}
+
+// playRound()
 function playRound(playerSelection, computerSelection) {
     // select a winner
 
@@ -34,35 +71,11 @@ function playRound(playerSelection, computerSelection) {
         result = 'draw';
     }
 
-    // display result
-    switch (result){
-        case 'win':
-            //return 'You Win! ${playerSelection} beats ${computerSelection}';
-            return 'You Win! ' + playerSelection.toUpperCase() + ' beats ' + computerSelection.toUpperCase();
-            break;
-        case 'lose':
-            return 'You Lose! ' + computerSelection.toUpperCase() + ' beats ' + playerSelection.toUpperCase();
-            break;
-        case 'draw':
-            return 'Draw ' + playerSelection.toUpperCase() + ' ties with ' + computerSelection.toUpperCase();
-            break;
-        default:
-            return 'error: cannot determin a winner';
-            break;
-    }
+    return result;
 
   }
-   
-// player selects either rock, paper or scissors
-const playerSelection = "rock";
 
-// computer selects either rock, paper or scissors
-const computerSelection = getComputerChoice();
-
-// select a winner
-console.log(playRound(playerSelection, computerSelection));
-
-
+// getComputerChoice()
 function getComputerChoice(){
     // randomly return rock, paper or scissors
     
@@ -91,3 +104,21 @@ function getComputerChoice(){
     }
 }
 
+// displayResult()
+function displayResult(playerScore, computerScore) {
+
+    if (playerScore > computerScore){
+        return 'You Win! ' + playerScore + '/' + computerScore;
+    }
+    else if (playerScore < computerScore){
+        return 'You Lose! ' + playerScore + '/' + computerScore;
+    }
+    else if (playerScore == computerScore){
+        return 'Draw! ' + playerScore + '/' + computerScore;
+    }
+    else {
+        return playerScore + '/' + computerScore;
+    }
+}
+
+game();
