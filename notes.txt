@@ -1,0 +1,27 @@
+Add a div for displaying results and change all of your console.logs into DOM methods.
+Display the running score, and announce a winner of the game once one player reaches 5 points.
+
+html:
+<div id='displayResult'></div>
+
+js:
+let score = 0
+
+const div = document.querySelector('#displayResult)
+const para = document.crateElement('p')
+
+para.textElement = 'Score: ' + score
+div.appendChild(para)
+
+
+
+   score = displayResult(result);
+    console.log(score);
+
+    // display result in a div
+    const container = document.querySelector('#container');
+
+    const content = document.createElement('div');
+    content.textContent = 'Results: ' + score;
+
+    container.appendChild(content);
