@@ -37,7 +37,7 @@ function game() {
 function playRound(playerSelection) {
     // select a winner
 
-    playerSelection = playerSelection.toLowerCase();
+    //playerSelection = playerSelection.toLower();
     let computerSelection = getComputerChoice();
 
     let result;
@@ -110,8 +110,14 @@ function displayResult(result, score) {
         score++;
     }
 
-    content.textContent = 'Score: ' + score;
-    container.appendChild(content);
+    if (score >= 5) {
+        content.textContent = `You win! ${score}/5`;
+        container.appendChild(content);
+        score = 0;
+    } else {
+        content.textContent = `Score: ${score}/5 - ${result}`;
+        container.appendChild(content);
+    }
 
     return score;
 }
@@ -120,6 +126,13 @@ function testFunction() {
     console.log('test');
 }
 
+function buttonEvent(button, result, score) {
+    result = playRound(button);
+    score = displayResult(result, score);
+
+    console.log(button, result);
+    return score;
+}
 
 const rock = document.querySelector('#btn-rock');
 const paper = document.querySelector('#btn-paper');
@@ -127,28 +140,24 @@ const scissors = document.querySelector('#btn-scissors');
 
 let score = 0;
 let result;
+let score1, score2 = 0;
+let player1, player2;
 
 // onclick the buttons set player selection to xxxx
 rock.addEventListener('click', () => {
-    result = playRound('rock');
-    score = displayResult(result, score);
-
-    console.log('rock', result);
+    let value = rock.value;
+    score = buttonEvent(value, result, score);
 });
 
 paper.onclick = () => {
-    result = playRound('paper');
-    score = displayResult(result, score);
-
-    console.log('paper', result);
+    let value = paper.value;
+    score = buttonEvent(value, result, score);
 
 };
 
 scissors.addEventListener('click', () => {
-    result = playRound('scissors');
-    score = displayResult(result, score);
-
-    console.log('scissors', result);
+    let value = scissors.value;
+    score = buttonEvent(value, result, score);
 
 });
 

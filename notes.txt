@@ -1,27 +1,26 @@
-Add a div for displaying results and change all of your console.logs into DOM methods.
 Display the running score, and announce a winner of the game once one player reaches 5 points.
 
-html:
-<div id='displayResult'></div>
+// get player selections
+let player1 = 'rock'
+let player2 = 'scissors'
+let score1, score2 = 0
 
-js:
-let score = 0
+// choose a winner (of the round)
+if ( player 1 wins ){
+   score1++
+} else if (player2 wins){
+   score2++
+} else if ( draw ){
+   nothing happens
+}
 
-const div = document.querySelector('#displayResult)
-const para = document.crateElement('p')
+// display score
+print score1/5
+print score2/5
 
-para.textElement = 'Score: ' + score
-div.appendChild(para)
-
-
-
-   score = displayResult(result);
-    console.log(score);
-
-    // display result in a div
-    const container = document.querySelector('#container');
-
-    const content = document.createElement('div');
-    content.textContent = 'Results: ' + score;
-
-    container.appendChild(content);
+// first player to 5 points wins
+if ( score1 === 5 ) {
+   print player 1 wins!
+} else if ( score2 === 5) {
+   print player 2 wins!
+}
